@@ -49,33 +49,6 @@
 				return $row;
 			}
 			
-			function swapBox($swap_user)
-			{
-				global $connection;
-
-				$swap_result = queryMysql("SELECT * FROM swap WHERE user_id = $swap_user");
-				if(!$swap_result) die($connection->error);
-				if($swap_result->num_rows)
-				$swap_col = array();
-				{
-					$swap_col = $swap_result->fetch_array(MYSQLI_ASSOC);
-				}
-				return $swap_col;
-			}
-			
-			function swapInfo($user_id){
-				global $connection;
-
-				$swap_info = queryMysql("SELECT first_name, last_name, profile_pic FROM hm_profile WHERE hm_id = '$user_id' ");
-				if(!$swap_info) die($connection->error);
-				if($swap_info->num_rows)
-				$swap_info_col = array();
-				{
-					$swap_info_col = $swap_info->fetch_array(MYSQLI_ASSOC);
-				}
-				return $swap_info_col;
-			}
-			
 			function timeAgo($date_from, $dateto=0)
 			{
 				// Defaults and assume if 0 is passed in that
