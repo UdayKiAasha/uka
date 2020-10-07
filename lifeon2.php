@@ -14,31 +14,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript">
 
-function show_status() {
-  var status = null;
-  // make hidden <pre> visible
-  $('#server_status').text('waiting for the response from https://iris-cloud.com...');
-  $('#server_status').show();
-  // code to check server status
-  var xmlhttp = new XMLHttpRequest();
-  var url = "https://iris-cloud.com:8188/uniqbio/irisserver/";
-  xmlhttp.open('GET',url,true);
-  xmlhttp.send(null);
-  xmlhttp.onreadystatechange = function() {
-    if (xmlhttp.readyState == 4) {
-      if ( xmlhttp.status == 200) {
-        status = xmlhttp.responseText;
-        // set status data
-        $('#server_status').text(status);
-		request_auth();
-      }
-      else {
-         //alert("Error (server status) - " + xmlhttp.responseText);
-         $('#server_status').text("ERROR - " + xmlhttp.responseText);
-      }
-    }
-  };
-}
+
 // function to get oauth2 bearer access_token
 function request_auth() {
   var bearer = null;
